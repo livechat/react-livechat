@@ -1,0 +1,27 @@
+{
+  "name": "react-livechat",
+  "version": "1.0.0",
+  "description": "React component to integrate LiveChat with your single-page app",
+  "main": "LiveChat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livechat/react-livechat.git"
+  },
+  "keywords": [
+    "react",
+    "livechat",
+    "chat"
+  ],
+  "author": "Tomasz Przybył",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/livechat/react-livechat/issues"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "homepage": "https://github.com/livechat/react-livechat#readme"
+}
