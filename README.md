@@ -39,7 +39,7 @@ import LiveChat from 'react-livechat'
 
 ### Advanced Usage
 
-To begin with you want to get your chat reference using **onChatLoaded** callback.
+To begin with, you want to get your chat reference using **onChatLoaded** callback.
 
 *Example:*
 ```javascript
