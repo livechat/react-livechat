@@ -49,7 +49,7 @@ To begin with, you want to get your chat reference using **onChatLoaded** callba
 />
 ```
 
-React LiveChat component uses our [JS API](https://docs.livechatinc.com/js-api/).
+*React LiveChat component uses our [JS API](https://docs.livechatinc.com/js-api/).*
 
 You have access to all methods and variables using your **livechat** reference or
 simply using **window.LC_API**.
