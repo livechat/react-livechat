@@ -90,7 +90,6 @@ Lets say you want display received or sent message somewhere else. You can get n
 | onPostchatSurveySubmitted  |  Executed when the post-chat survey has been submitted by visitor. |
 | onRatingSubmitted  |  Executed when the chat rating is submitted. The only argument, data, can have three values: *good, bad or none.*|
 | onRatingCommentSubmitted |  Executed when a chat rating comment is submitted. The only argument, data, contains the *message* entered by the visitor. |
-|---|---|
 
 ### Support
 In case of any problem you can chat with us [here](https://www.livechatinc.com/contact/).
