@@ -63,7 +63,7 @@ window.LC_API.hide_chat_window();
 ### Callbacks
 *To make your code cleaner and life easier our component gives you easy way to control chat callbacks.*
 
-Lets say you want display received or sent message somewhere else. You can get new messages using below code:
+Lets say you want display received or sent message somewhere else. You can get new messages using code below:
 ```javascript
 <LiveChat
   ...
