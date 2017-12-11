@@ -10,9 +10,7 @@ To use LiveChat in your application you need **license_id**.
 
 You get one after creating account on our [website](https://www.livechatinc.com/).
 
-You can check your **license_id** anytime [here](https://my.livechatinc.com/settings/code).
-
-*If you have difficulties finding your **license_id** please take a look at this [photo](https://github.com/livechat/react-livechat/blob/master/license.png).*
+*If you have difficulties finding your **license_id** please take a look at this [screenshot](https://github.com/livechat/react-livechat/blob/master/license.png).*
 
 
 ### Installation
@@ -25,19 +23,18 @@ npm install react-livechat --save
 
 Usage is very simple:
 
-1. Import LiveChat component:
+*Import LiveChat component and put it in your render method:*
 ```javascript
 import LiveChat from 'react-livechat'
-```
-2. Add this to your render method (*note that **license** is required*):
-```javascript
+
+...
+
 <LiveChat license={your_license_id} />
 ```
-3. **That's all!** After restarting your page you should see your chat :)
 
 *You can change chat appearance [here](https://my.livechatinc.com/settings/theme)*.
 
-### Advanced Usage
+### Methods
 
 To begin with, you want to get your chat reference using **onChatLoaded** callback.
 
@@ -60,6 +57,24 @@ this.livechat.hide_chat_window();
 // is same as:
 window.LC_API.hide_chat_window();
 ```
+*Table of all available methods:*
+
+|Name|Note|
+|---|---|
+| close_chat | Closes an ongoing chat. |
+| disable_sounds | Mutes all sounds in the chat window on visitor's side (not supported with the pop-up chat window). |
+| open_chat_window | Maximizes the chat window (when using the embedded chat window) or opens the chat window (when using the pop-up window).|
+| minimize_chat_window | Minimizes the chat window (not supported with the pop-up chat window). |
+| hide_chat_window | Hides the chat window (not supported with the pop-up chat window). |
+| agents_are_available | Returns true if your agents are available to chat, otherwise it returns false.|
+| chat_window_maximized | Returns true if the chat window is maximized, returns false otherwise.|
+|chat_window_minimized | Returns true if the chat window is minimized, returns false otherwise. |
+| chat_window_hidden | Returns true if the chat window is hidden, returns false otherwise. |
+| visitor_queued | Returns true if the visitor is currently waiting in the queue, returns false otherwise. |
+|chat_running | Returns true if the visitor is currently chatting with an agent, returns false otherwise. |
+| visitor_engaged  | Returns true if the visitor is currently chatting, waiting in the queue or the greeting is displayed to them. Returns false otherwise.|
+|get_window_type | Returns embedded if the chat window is embedded on the website or popup if the chat window opens in a new window.|
+
 ### Callbacks
 *To make your code cleaner and life easier our component gives you easy way to control chat callbacks.*
 
