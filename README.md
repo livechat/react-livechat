@@ -10,6 +10,8 @@ To use LiveChat in your application you need **license_id**.
 
 You get one after creating account on our [website](https://www.livechatinc.com/).
 
+You can check your **license_id** anytime [here](https://my.livechatinc.com/settings/code).
+
 *If you have difficulties finding your **license_id** please take a look at this [screenshot](https://github.com/livechat/react-livechat/blob/master/license.png).*
 
 
