@@ -2,7 +2,7 @@
 
 React component to integrate your application with LiveChat easily ;)
 
-*You can start your 30 days free trial [here](https://www.livechatinc.com/signup/?source_id=header_cta&source_url=https://www.livechatinc.com/&source_type=website).*
+*You can start your 30 days free trial [here](https://www.livechatinc.com/signup/?utm_source=github&utm_medium=link&=utm_campaign=react-livechat).*
 
 ### Pre requirements:
 
