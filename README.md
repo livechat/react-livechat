@@ -36,6 +36,8 @@ import LiveChat from 'react-livechat'
 
 *You can change chat appearance [here](https://my.livechatinc.com/settings/theme)*.
 
+*You can specify chat window group by sending **group** prop.*
+
 ### Methods
 
 To begin with, you want to get your chat reference using **onChatLoaded** callback.
