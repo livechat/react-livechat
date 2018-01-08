@@ -1,31 +1,33 @@
-﻿# React LiveChat
+# LiveChat for React
 
-React component to integrate your application with LiveChat easily ;)
+This is a React component to easily add [LiveChat widget](https://www.livechatinc.com/) to your application.
 
-*You can start your 30 days free trial [here](https://www.livechatinc.com/signup/?utm_source=github.com&utm_medium=link&=utm_campaign=react-livechat).*
+## Getting Started
 
-### Pre requirements:
+### Prerequisites
 
-To use LiveChat in your application you need **license_id**. 
+To use LiveChat in your React application, you will need LiveChat license ID. 
 
-You get one after creating account on our [website](https://www.livechatinc.com/).
+If you already have a LiveChat account, get your **license_id** [here](https://my.livechatinc.com/settings/code).
 
-You can check your **license_id** anytime [here](https://my.livechatinc.com/settings/code).
+![LiveChat license ID](https://github.com/livechat/react-livechat/blob/master/license.png)
 
-*If you have difficulties finding your **license_id** please take a look at this [screenshot](https://github.com/livechat/react-livechat/blob/master/license.png).*
-
+If you don't have an account, you can create one [here](https://www.livechatinc.com/).
 
 ### Installation
-All you have to do:
+
+To import LiveChat for React, run the following command:
+
 ```javascript
 npm install react-livechat --save
 ```
 
-### Usage
+## User Guide
 
-Usage is very simple:
+### Start
 
-*Import LiveChat component and put it in your render method:*
+Having imported LiveChat for React, put it in your render method:
+
 ```javascript
 import LiveChat from 'react-livechat'
 
@@ -34,15 +36,18 @@ import LiveChat from 'react-livechat'
 <LiveChat license={your_license_id} />
 ```
 
-*You can change chat appearance [here](https://my.livechatinc.com/settings/theme)*.
+### Customization
 
-*You can specify chat window group by sending **group** prop.*
+You can change the look and feel of your chat widget in [Settings > Chat window](https://my.livechatinc.com/settings/theme) section.
+
+You can set the chat window group by sending `group` prop. Learn more about groups here: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
 
 ### Methods
 
-To begin with, you want to get your chat reference using **onChatLoaded** callback.
+This module uses [LiveChat JS API](https://docs.livechatinc.com/js-api/). 
 
-*Example:*
+Get your chat reference using `onChatLoaded` callback:
+
 ```javascript
 <LiveChat 
   onChatLoaded={ ref => this.livechat = ref }
@@ -50,22 +55,21 @@ To begin with, you want to get your chat reference using **onChatLoaded** callba
 />
 ```
 
-*React LiveChat component uses our [JS API](https://docs.livechatinc.com/js-api/).*
+You have access to all methods and variables of [LiveChat JS API](https://docs.livechatinc.com/js-api/) with your `livechat` reference or
+`window.LC_API`.
 
-You have access to all methods and variables using your **livechat** reference or
-simply using **window.LC_API**.
-
-*Example:*
+Example:
 ```javascript
 this.livechat.hide_chat_window();
-// is same as:
+// is the same as:
 window.LC_API.hide_chat_window();
 ```
-*Table of all available methods:*
+
+#### Available methods
 
 |Name|Note|
 |---|---|
-| close_chat | Closes an ongoing chat. |
+| close_chat | Closes the ongoing chat. |
 | disable_sounds | Mutes all sounds in the chat window on visitor's side (not supported with the pop-up chat window). |
 | open_chat_window | Maximizes the chat window (when using the embedded chat window) or opens the chat window (when using the pop-up window).|
 | minimize_chat_window | Minimizes the chat window (not supported with the pop-up chat window). |
@@ -80,9 +84,11 @@ window.LC_API.hide_chat_window();
 |get_window_type | Returns embedded if the chat window is embedded on the website or popup if the chat window opens in a new window.|
 
 ### Callbacks
-*To make your code cleaner and life easier our component gives you easy way to control chat callbacks.*
 
-Lets say you want display received or sent message somewhere else. You can get new messages using code below:
+LiveChat React component gives you the option to control chat callbacks.
+
+Let's say that you want display a received or sent message somewhere else. You can get new messages using the code below:
+
 ```javascript
 <LiveChat
   ...
@@ -90,7 +96,7 @@ Lets say you want display received or sent message somewhere else. You can get n
 />
 ```
 
-*Table of all available callbacks:*
+#### Available callbacks
 
 |Name|Note|
 |---|---|
@@ -110,8 +116,9 @@ Lets say you want display received or sent message somewhere else. You can get n
 | onRatingSubmitted  |  Executed when the chat rating is submitted. The only argument, data, can have three values: *good, bad or none.*|
 | onRatingCommentSubmitted |  Executed when a chat rating comment is submitted. The only argument, data, contains the *message* entered by the visitor. |
 
-### Support
-In case of any problem you can chat with us [here](https://www.livechatinc.com/contact/).
 
-**I hope you will find this module useful. Happy Coding :)**
+## Support
 
+If you need any help, you can chat with us [via email](mailto:developers@livechatinc.com) or [on chat](https://developers.livechatinc.com/).
+
+I hope you will find this module useful. Happy coding!
