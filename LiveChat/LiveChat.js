@@ -25,6 +25,7 @@ export default class LiveChat extends React.Component {
     if (!window.LC_API) {
       window.__lc = window.__lc || {};
       window.__lc.license = this.props.license;
+      window.__lc.group = this.props.group;
       const lc = document.createElement('script');
       lc.type = 'text/javascript';
       lc.async = true;
@@ -85,6 +86,7 @@ export default class LiveChat extends React.Component {
 LiveChat.propTypes = {
   // important
   license: PropTypes.number.isRequired,
+  group: PropTypes.number,
   onChatLoaded: PropTypes.func,
   // less important
   onBeforeLoad: PropTypes.func,
@@ -102,3 +104,8 @@ LiveChat.propTypes = {
   onRatingSubmitted: PropTypes.func,
   onRatingCommentSubmitted: PropTypes.func,
 };
+
+LiveChat.defaultProps = {
+  group: 0,
+};
+
