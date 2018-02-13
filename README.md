@@ -82,6 +82,7 @@ window.LC_API.hide_chat_window();
 |chat_running | Returns true if the visitor is currently chatting with an agent, returns false otherwise. |
 | visitor_engaged  | Returns true if the visitor is currently chatting, waiting in the queue or the greeting is displayed to them. Returns false otherwise.|
 |get_window_type | Returns embedded if the chat window is embedded on the website or popup if the chat window opens in a new window.|
+| set_custom_variables | You can set [custom variables](https://docs.livechatinc.com/js-api/#set-custom-variables) that the LiveChat agents will see in their apps. [Custom variables](https://docs.livechatinc.com/js-api/#set-custom-variables) will be saved in the chat transcript, so you will see them in the Archives even after the chat has been finished. |
 
 ### Callbacks
 
