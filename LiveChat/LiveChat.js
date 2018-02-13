@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class LiveChat extends React.Component {
-  componentWillMount(){
+  componentWillMount() {
     this.loadLiveChatApi.bind(this)();
   }
 
-  chatLoaded(){
+  chatLoaded() {
     if (window.LC_API) {
       this.setCallbacks.bind(this)();
       if (typeof this.props.onChatLoaded === 'function') {
@@ -15,7 +15,7 @@ export default class LiveChat extends React.Component {
     }
   }
 
-  chatNotLoaded(){
+  chatNotLoaded() {
     if (typeof this.props.onChatLoaded === 'function') {
       this.props.onChatLoaded('error when loading');
     }
@@ -26,6 +26,7 @@ export default class LiveChat extends React.Component {
       window.__lc = window.__lc || {};
       window.__lc.license = this.props.license;
       window.__lc.group = this.props.group;
+      window.__lc.params = this.props.params;
       const lc = document.createElement('script');
       lc.type = 'text/javascript';
       lc.async = true;
@@ -41,7 +42,7 @@ export default class LiveChat extends React.Component {
     return null;
   }
 
-  setCallbacks(){
+  setCallbacks() {
     if (typeof this.props.onBeforeLoad === 'function')
       window.LC_API.on_before_load = this.props.onBeforeLoad.bind(this);
 
@@ -73,10 +74,10 @@ export default class LiveChat extends React.Component {
       window.LC_API.on_ticket_created = this.props.onTicketCreated.bind(this);
 
     if (typeof this.props.onPrechatSurveySubmitted === 'function')
-      window.LC_API.on_prechat_survey_submitted =  this.props.onPrechatSurveySubmitted.bind(this);
+      window.LC_API.on_prechat_survey_submitted = this.props.onPrechatSurveySubmitted.bind(this);
 
     if (typeof this.props.onRatingSubmitted === 'function')
-      window.LC_API.on_rating_submitted =  this.props.onRatingSubmitted.bind(this);
+      window.LC_API.on_rating_submitted = this.props.onRatingSubmitted.bind(this);
 
     if (typeof this.props.onRatingCommentSubmitted === 'function')
       window.LC_API.on_rating_comment_submitted = this.props.onRatingCommentSubmitted.bind(this);
@@ -89,6 +90,10 @@ LiveChat.propTypes = {
   group: PropTypes.number,
   onChatLoaded: PropTypes.func,
   // less important
+  params: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired
+  })),
   onBeforeLoad: PropTypes.func,
   onAfterLoad: PropTypes.func,
   onChatWindowOpened: PropTypes.func,
