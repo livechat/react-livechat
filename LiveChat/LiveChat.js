@@ -75,6 +75,9 @@ export default class LiveChat extends React.Component {
 
     if (typeof this.props.onPrechatSurveySubmitted === 'function')
       window.LC_API.on_prechat_survey_submitted = this.props.onPrechatSurveySubmitted.bind(this);
+    
+    if (typeof this.props.onPostchatSurveySubmitted === 'function')
+      window.LC_API.on_postchat_survey_submitted = this.props.onPostchatSurveySubmitted.bind(this);
 
     if (typeof this.props.onRatingSubmitted === 'function')
       window.LC_API.on_rating_submitted = this.props.onRatingSubmitted.bind(this);
