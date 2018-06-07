@@ -65,6 +65,18 @@ this.livechat.hide_chat_window();
 window.LC_API.hide_chat_window();
 ```
 
+### LC_Invite exception
+
+Sometimes it can happen that `LC_Invite` is  is still being loaded when `onChatLoaded` is called.
+To ensure that `LC_Invite` is loaded you can give additional check to `onChatLoaded` function:
+```js
+onChatLoaded = (ref) => {
+ ref.on_after_load = function ()  {
+    //here you can use any method you want!
+  }		
+}
+```
+
 #### Available methods
 
 |Name|Note|
