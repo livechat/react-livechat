@@ -16,8 +16,8 @@ export default class LiveChat extends React.Component {
   }
 
   chatNotLoaded() {
-    if (typeof this.props.onChatLoaded === 'function') {
-      this.props.onErrorLoading && this.props.onErrorLoading();
+    if (typeof this.props.onErrorLoading === 'function') {
+      this.props.onErrorLoading();
     }
   }
 
