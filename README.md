@@ -38,11 +38,13 @@ import LiveChat from 'react-livechat'
 
 ### Group
 
-You can set up group directly in `LiveChat` component property. Thanks to this, all chats will be routed to the specified group:
+You can set up group directly in `LiveChat` component prop. Thanks to this, all chats will be routed to the specified group:
 
 ```javascript
 <LiveChat license={your_license_id} group={3} />
 ```
+
+Here you can learn more about groups: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
 
 ### Visitor's details
 
@@ -69,8 +71,6 @@ const params = [
 ### Customization
 
 You can change the look and feel of your chat widget in [Settings > Chat window](https://my.livechatinc.com/settings/theme) section.
-
-You can set the chat window group by sending `group` prop. Learn more about groups here: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
 
 ### Methods
 
