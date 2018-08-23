@@ -38,25 +38,23 @@ import LiveChat from 'react-livechat'
 
 ### Group
 
-You can set up group directly in `LiveChat` component property:
+You can set up group directly in `LiveChat` component property. Thanks to this, all chats will be routed to the specified group:
 
 ```javascript
-<LiveChat license={your_license_id} group={your_group_id} />
+<LiveChat license={your_license_id} group={3} />
 ```
 
 ### Visitor's details
 
-If you already know who is your visitor you can set up his/her name and/or email:
+If you already know who your visitor is, you can set up his/her name and/or email:
 
 ```javascript
 <LiveChat license={your_license_id} visitor={{name: 'John', email: 'john@example.com'}} />
 ```
 
-Note: you can set up only email or only name - it's up to you!
-
 ### Custom variables
 
-Custom variables are additional details that you can pass to LiveChat from the code (i.e. visitor's login or profile link). Here is how to make it:
+Custom variables are additional details that you can pass to LiveChat from the code (i.e., login or profile link). Here is how to make it:
 
 ```javascript
 const params = [
