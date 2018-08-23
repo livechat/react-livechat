@@ -36,11 +36,41 @@ import LiveChat from 'react-livechat'
 <LiveChat license={your_license_id} />
 ```
 
+### Group
+
+You can set up group directly in `LiveChat` component prop. Thanks to this, all chats will be routed to the specified group:
+
+```javascript
+<LiveChat license={your_license_id} group={3} />
+```
+
+Here you can learn more about groups: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
+
+### Visitor's details
+
+If you already know who your visitor is, you can set up his/her name and/or email:
+
+```javascript
+<LiveChat license={your_license_id} visitor={{name: 'John', email: 'john@example.com'}} />
+```
+
+### Custom variables
+
+Custom variables are additional details that you can pass to LiveChat from the code (i.e., login or profile link). Here is how to make it:
+
+```javascript
+const params = [
+  { name: 'Login', value: 'joe_public' },
+  { name: 'Account ID', value: 'ABCD1234' },
+  { name: 'Total order value', value: '$123' }
+];
+
+<LiveChat license={your_license_id} params={params} />
+```
+
 ### Customization
 
 You can change the look and feel of your chat widget in [Settings > Chat window](https://my.livechatinc.com/settings/theme) section.
-
-You can set the chat window group by sending `group` prop. Learn more about groups here: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
 
 ### Methods
 
