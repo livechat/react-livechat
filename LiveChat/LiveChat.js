@@ -26,6 +26,7 @@ export default class LiveChat extends React.Component {
       window.__lc = window.__lc || {};
       window.__lc.license = this.props.license;
       window.__lc.group = this.props.group;
+      window.__lc.chat_between_groups = this.props.chatBetweenGroups;
       window.__lc.params = this.props.params;
       window.__lc.visitor = this.props.visitor;
       const lc = document.createElement('script');
@@ -99,6 +100,7 @@ LiveChat.propTypes = {
       name: PropTypes.string,
       email: PropTypes.string
   }),
+  chatBetweenGroups: PropTypes.bool,
   onBeforeLoad: PropTypes.func,
   onAfterLoad: PropTypes.func,
   onChatWindowOpened: PropTypes.func,
