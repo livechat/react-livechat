@@ -46,6 +46,16 @@ You can set up group directly in `LiveChat` component prop. Thanks to this, all 
 
 Here you can learn more about groups: [Dividing live chat by group](https://www.livechatinc.com/kb/dividing-live-chat-by-group/).
 
+#### Separated chat sessions
+
+You can separate chat sessions between groups by using `chatBetweenGroups` prop:
+
+```javascript
+<LiveChat license={your_license_id} group={3} chatBetweenGroups={false} />
+```
+
+[Here](https://www.livechatinc.com/kb/dividing-live-chat-by-group/#separate-chat-sessions) is an article about it.
+
 ### Visitor's details
 
 If you already know who your visitor is, you can set up his/her name and/or email:
