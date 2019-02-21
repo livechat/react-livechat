@@ -29,6 +29,7 @@ export default class LiveChat extends React.Component {
       window.__lc.chat_between_groups = this.props.chatBetweenGroups;
       window.__lc.params = this.props.params;
       window.__lc.visitor = this.props.visitor;
+      window.__lc.ga_version = this.props.gaVersion;
       const lc = document.createElement('script');
       lc.type = 'text/javascript';
       lc.async = true;
@@ -97,9 +98,16 @@ LiveChat.propTypes = {
     value: PropTypes.any.isRequired
   })),
   visitor: PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string
+    name: PropTypes.string,
+    email: PropTypes.string
   }),
+  gaVersion: PropTypes.oneOf([
+    "pageTracker",
+    "urchinTracker",
+    "gtm",
+    "gaq",
+    "ga",
+  ]),
   chatBetweenGroups: PropTypes.bool,
   onBeforeLoad: PropTypes.func,
   onAfterLoad: PropTypes.func,
