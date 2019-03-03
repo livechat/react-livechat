@@ -49,7 +49,7 @@ export default class LiveChat extends React.Component {
       window.LC_API.on_before_load = this.props.onBeforeLoad.bind(this);
 
     if (typeof this.props.onAfterLoad === 'function')
-      window.LC_API.on_after_load = this.props.onAfterLoad();
+      window.LC_API.on_after_load = this.props.onAfterLoad.bind(this);
 
     if (typeof this.props.onChatWindowOpened === 'function')
       window.LC_API.on_chat_window_opened = this.props.onChatWindowOpened.bind(this);
