@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class LiveChat extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.loadLiveChatApi.bind(this)();
   }
 
