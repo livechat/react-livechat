@@ -89,6 +89,7 @@ LiveChat.propTypes = {
   license: PropTypes.number.isRequired,
   group: PropTypes.number,
   onChatLoaded: PropTypes.func,
+  onErrorLoading: PropTypes.func,
   // less important
   params: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
