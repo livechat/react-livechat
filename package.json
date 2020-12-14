@@ -18,6 +18,9 @@
     "chat"
   ],
   "author": "Tomasz Przybył",
+  "contributors": [
+    "turkus"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/livechat/react-livechat/issues"
