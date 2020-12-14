@@ -84,6 +84,10 @@ export const LiveChat = (props) => {
   return null
 }
 
+LiveChat.defaultProps = {
+  group: 0,
+}
+
 LiveChat.propTypes = {
   // important
   license: PropTypes.number.isRequired,
@@ -114,8 +118,4 @@ LiveChat.propTypes = {
   onPostchatSurveySubmitted: PropTypes.func,
   onRatingSubmitted: PropTypes.func,
   onRatingCommentSubmitted: PropTypes.func,
-}
-
-LiveChat.defaultProps = {
-  group: 0,
 }
