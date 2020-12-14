@@ -1,89 +1,86 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-export default class LiveChat extends React.Component {
-  componentWillMount() {
-    this.loadLiveChatApi.bind(this)();
+const API_URL = 'https://cdn.livechatinc.com/tracking.js'
+const NON_LC_CALLBACKS = ['onChatLoaded', 'onErrorLoading']
+
+const loadLiveChat = (w, d, s, chatLoaded, chatNotLoaded) => {
+  let e
+
+  const f = (w) => {
+    if (e._h) e._h.apply(null, w)
+    else e._q.push(w)
   }
 
-  chatLoaded() {
-    if (window.LC_API) {
-      this.setCallbacks.bind(this)();
-      if (typeof this.props.onChatLoaded === 'function') {
-        this.props.onChatLoaded(window.LC_API);
-      }
+  e = {
+    _q: [],
+    _h: null,
+    _v: '2.0',
+    on() {
+      f(['on', s.call(arguments)]) // eslint-disable-line
+    },
+    off() {
+      f(['off', s.call(arguments)]) // eslint-disable-line
+    },
+    get() {
+      if (!e._h) throw new Error('[LiveChatWidget] You can\'t use getters before load.')
+      return f(['get', s.call(arguments)]) // eslint-disable-line
+    },
+    call() {
+      f(['call', s.call(arguments)]) // eslint-disable-line
+    },
+    init() {
+      const n = d.createElement('script')
+      n.async = !0
+      n.type = 'text/javascript'
+      n.src = API_URL
+      d.head.appendChild(n)
+      n.addEventListener('load', chatLoaded)
+      n.addEventListener('error', chatNotLoaded)
+    },
+  }
+  if (!w.__lc.asyncInit) e.init()
+  w.LiveChatWidget = w.LiveChatWidget || e
+}
+
+export const LiveChat = (props) => {
+  const setCallbacks = () => {
+    props.forEach((prop) => {
+      if (typeof prop !== 'function') return
+      if (NON_LC_CALLBACKS.includes(prop.name)) return
+      window.LC_API[prop.name] = prop
+    })
+  }
+
+  const chatLoaded = () => {
+    setCallbacks()
+    const { onChatLoaded } = props
+    if (onChatLoaded) onChatLoaded(window.LC_API)
+  }
+
+  const chatNotLoaded = () => {
+    const { onErrorLoading } = props
+    if (onErrorLoading) onErrorLoading()
+  }
+
+  useEffect(() => {
+    const { group, license } = props
+    if (!license) return
+
+    window.__lc = window.__lc || {}
+    window.__lc.license = license
+    window.__lc.group = group
+
+    loadLiveChat(window, document, [].slice, chatLoaded, chatNotLoaded)
+
+    return () => {
+      if (window.LC_API) window.LiveChatWidget.call('destroy')
+      const loadedScript = document.querySelector(`script[src='${API_URL}']`)
+      if (loadedScript) loadedScript.remove()
     }
-  }
+  }, [props])
 
-  chatNotLoaded() {
-    if (typeof this.props.onErrorLoading === 'function') {
-      this.props.onErrorLoading();
-    }
-  }
-
-  loadLiveChatApi() {
-    if (!window.LC_API) {
-      window.__lc = window.__lc || {};
-      window.__lc.license = this.props.license;
-      window.__lc.group = this.props.group;
-      window.__lc.chat_between_groups = this.props.chatBetweenGroups;
-      window.__lc.params = this.props.params;
-      window.__lc.visitor = this.props.visitor;
-      const lc = document.createElement('script');
-      lc.type = 'text/javascript';
-      lc.async = true;
-      lc.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-      const s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(lc, s);
-      lc.addEventListener('load', this.chatLoaded.bind(this));
-      lc.addEventListener('error', this.chatNotLoaded.bind(this));
-    }
-  }
-
-  render() {
-    return null;
-  }
-
-  setCallbacks() {
-    if (typeof this.props.onBeforeLoad === 'function')
-      window.LC_API.on_before_load = this.props.onBeforeLoad.bind(this);
-
-    if (typeof this.props.onAfterLoad === 'function')
-      window.LC_API.on_after_load = this.props.onAfterLoad.bind(this);
-
-    if (typeof this.props.onChatWindowOpened === 'function')
-      window.LC_API.on_chat_window_opened = this.props.onChatWindowOpened.bind(this);
-
-    if (typeof this.props.onChatWindowMinimized === 'function')
-      window.LC_API.on_chat_window_minimized = this.props.onChatWindowMinimized.bind(this);
-
-    if (typeof this.props.onChatWindowHidden === 'function')
-      window.LC_API.on_chat_window_hidden = this.props.onChatWindowHidden.bind(this);
-
-    if (typeof this.props.onChatStateChanged === 'function')
-      window.LC_API.on_chat_state_changed = this.props.onChatStateChanged.bind(this);
-
-    if (typeof this.props.onChatStarted === 'function')
-      window.LC_API.on_chat_started = this.props.onChatStarted.bind(this);
-
-    if (typeof this.props.onChatEnded === 'function')
-      window.LC_API.on_chat_ended = this.props.onChatEnded.bind(this);
-
-    if (typeof this.props.onMessage === 'function')
-      window.LC_API.on_message = this.props.onMessage.bind(this);
-
-    if (typeof this.props.onTicketCreated === 'function')
-      window.LC_API.on_ticket_created = this.props.onTicketCreated.bind(this);
-
-    if (typeof this.props.onPrechatSurveySubmitted === 'function')
-      window.LC_API.on_prechat_survey_submitted = this.props.onPrechatSurveySubmitted.bind(this);
-
-    if (typeof this.props.onRatingSubmitted === 'function')
-      window.LC_API.on_rating_submitted = this.props.onRatingSubmitted.bind(this);
-
-    if (typeof this.props.onRatingCommentSubmitted === 'function')
-      window.LC_API.on_rating_comment_submitted = this.props.onRatingCommentSubmitted.bind(this);
-  }
+  return null
 }
 
 LiveChat.propTypes = {
@@ -94,11 +91,11 @@ LiveChat.propTypes = {
   // less important
   params: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.any.isRequired
+    value: PropTypes.any.isRequired,
   })),
   visitor: PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string
+    name: PropTypes.string,
+    email: PropTypes.string,
   }),
   chatBetweenGroups: PropTypes.bool,
   onBeforeLoad: PropTypes.func,
@@ -115,8 +112,8 @@ LiveChat.propTypes = {
   onPostchatSurveySubmitted: PropTypes.func,
   onRatingSubmitted: PropTypes.func,
   onRatingCommentSubmitted: PropTypes.func,
-};
+}
 
 LiveChat.defaultProps = {
   group: 0,
-};
+}
