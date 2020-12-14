@@ -79,7 +79,7 @@ export const LiveChat = (props) => {
       const loadedScript = document.querySelector(`script[src='${API_URL}']`)
       if (loadedScript) loadedScript.remove()
     }
-  }, [props])
+  }, [])
 
   return null
 }
