@@ -65,12 +65,22 @@ export const LiveChat = (props) => {
   }
 
   useEffect(() => {
-    const { group, license } = props
+    const {
+      chatBetweenGroups,
+      group,
+      license,
+      params,
+      visitor,
+    } = props
+
     if (!license) return
 
     window.__lc = window.__lc || {}
     window.__lc.license = license
     window.__lc.group = group
+    window.__lc.chat_between_groups = chatBetweenGroups
+    window.__lc.params = params
+    window.__lc.visitor = visitor
 
     loadLiveChat(window, document, [].slice, chatLoaded, chatNotLoaded)
 
