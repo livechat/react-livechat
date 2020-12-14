@@ -45,7 +45,8 @@ const loadLiveChat = (w, d, s, chatLoaded, chatNotLoaded) => {
 
 export const LiveChat = (props) => {
   const setCallbacks = () => {
-    props.forEach((prop) => {
+    Object.keys(props).forEach((key) => {
+      const prop = props[key]
       if (typeof prop !== 'function') return
       if (NON_LC_CALLBACKS.includes(prop.name)) return
       window.LC_API[prop.name] = prop
