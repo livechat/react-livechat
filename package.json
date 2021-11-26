@@ -2,11 +2,13 @@
   "name": "react-livechat",
   "version": "1.0.27",
   "description": "React component to integrate LiveChat with your single-page app",
-  "main": "LiveChat.js",
+  "main": "dist/index",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i LiveChat/LiveChat.js -o dist/LiveChat.min.js",
-    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -i LiveChat/LiveChat.js -o dist/LiveChat.js"
+    "build": "tsc",
+    "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i src/index.ts -o dist/index.min.js",
+    "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -i src/index.ts -o dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,9 +36,7 @@
     "rollup": "^0.55.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-uglify": "^3.0.0"
-  },
-  "dependencies": {
-    "prop-types": "^15.6.1"
+    "rollup-plugin-uglify": "^3.0.0",
+    "typescript": "^4.5.2"
   }
 }
