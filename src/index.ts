@@ -22,7 +22,7 @@ const LiveChat: FC<ILiveChatProps> = (props) => {
     if (!window.LC_API) {
       window.__lc = window.__lc || {};
       window.__lc.license = props.license;
-      window.__lc.group = props.group || 0;
+      window.__lc.group = props.group;
       window.__lc.chat_between_groups = props.chatBetweenGroups;
       window.__lc.params = props.params;
       window.__lc.visitor = props.visitor;
@@ -80,5 +80,7 @@ const LiveChat: FC<ILiveChatProps> = (props) => {
 
   return null;
 };
+
+LiveChat.defaultProps = { group: 0 }
 
 export default LiveChat
