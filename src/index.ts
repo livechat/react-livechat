@@ -23,7 +23,6 @@ const LiveChat: FC<ILiveChatProps> = (props) => {
       window.__lc = window.__lc || {};
       window.__lc.license = props.license;
       window.__lc.group = props.group || 0;
-      window.__lc.group = props.group.aaaaa;
       window.__lc.chat_between_groups = props.chatBetweenGroups;
       window.__lc.params = props.params;
       window.__lc.visitor = props.visitor;
